@@ -1,0 +1,107 @@
+:root {
+  --bg-color: linear-gradient(135deg, rgb(43, 45, 66), rgb(43, 45, 66));
+  --text-color: rgb(237, 242, 244);
+  --glass: rgba(255, 255, 255, 0.05);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --border: rgba(255, 255, 255, 0.1);
+
+  --gray-light: rgb(141, 153, 174);
+  --gray-very-light: rgb(237, 242, 244);
+  --red-soft: rgb(239, 35, 60);
+  --red-deep: rgb(217, 4, 41);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+  overflow: hidden;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 999;
+  user-select: none;
+  color: var(--text-color);
+}
+
+.container {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 45px 70px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+#display {
+  font-size: 80px;
+  letter-spacing: 3px;
+  margin-bottom: 35px;
+  color: var(--gray-very-light);
+  text-shadow: 0 0 6px var(--gray-light), 0 0 12px var(--gray-light);
+  animation: balancedGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes balancedGlow {
+  from {
+    text-shadow: 0 0 4px var(--gray-light);
+  }
+  to {
+    text-shadow: 0 0 10px var(--gray-light), 0 0 18px var(--gray-light);
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  font-size: 18px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.3s;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  color: var(--gray-very-light);
+}
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+}
+
+/* Start: Gray-Light to White */
+.start {
+  background: linear-gradient(45deg, var(--gray-light), var(--gray-very-light));
+  color: rgb(43, 45, 66);
+}
+
+/* Stop: Deep Red to Soft Red */
+.stop {
+  background: linear-gradient(45deg, var(--red-deep), var(--red-soft));
+  color: white;
+}
+
+/* Reset: Light Gray Gradient */
+.reset {
+  background: linear-gradient(45deg, var(--gray-very-light), white);
+  color: rgb(43, 45, 66);
+}
